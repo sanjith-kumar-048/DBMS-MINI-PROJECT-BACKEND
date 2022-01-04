@@ -1,0 +1,15 @@
+asgiref==3.4.1
+beautifulsoup4==4.10.0
+cffi==1.15.0
+Django==4.0.1
+django-bootstrap4==21.2
+django-braces==1.15.0
+django-cors-headers==3.10.1
+djangorestframework==3.13.1
+misaka==2.1.1
+mysqlclient==2.1.0
+psycopg2-binary==2.8.6
+pycparser==2.21
+pytz==2021.3
+soupsieve==2.3.1
+sqlparse==0.4.2
