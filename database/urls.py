@@ -8,11 +8,9 @@ router.register(r'dept', views.DepartmentViewSet)
 router.register(r'student', views.StudentViewSet)
 router.register(r'subject', views.SubjectViewSet)
 router.register(r'teacher', views.TeacherViewSet)
-router.register(r'profile', views.UserProfileViewSet)
 
 
 # The API URLs are now determined automatically by the router.
 urlpatterns = [
     path('', include(router.urls)),
-    path('login/', views.UserLoginApiView.as_view()),
 ]
