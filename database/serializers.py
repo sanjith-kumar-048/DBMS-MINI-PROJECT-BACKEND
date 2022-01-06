@@ -6,33 +6,21 @@ class DepartmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Department
         fields = '__all__'
-        extra_kwargs = {
-            'user_profile': {'read_only': True}
-        }
 
 class StudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Student
         fields = '__all__'
-        extra_kwargs = {
-            'user_profile': {'read_only': True}
-        }
 
 class SubjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Subject
         fields = '__all__'
-        extra_kwargs = {
-            'user_profile': {'read_only': True}
-        }
 
 class TeacherSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Teacher
         fields = '__all__'
-        extra_kwargs = {
-            'user_profile': {'read_only': True}
-        }
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
