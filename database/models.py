@@ -2,6 +2,7 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
+from django.conf import settings
 
 #for custom userprofile manage
 from django.contrib.auth.models import BaseUserManager
@@ -12,7 +13,10 @@ class Department(models.Model):
     dept_id = models.CharField(
         max_length=10, unique=True, primary_key=True, blank=False, null=False)
     dept_name = models.CharField(max_length=250, unique=True, blank=False, null=False)
-
+    user_profile = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
     def __str__(self):
         return  f"{self.dept_name}"
 
@@ -26,6 +30,10 @@ class Student(models.Model):
     ], blank=False, null=False)
     section = models.CharField(max_length=1, blank=False, null=False)
     phone = models.CharField(max_length=12, unique=True)
+    user_profile = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
     email = models.EmailField(unique=True)
     address = models.TextField(blank=False, null=False)
     department = models.ForeignKey(Department, related_name='dept', on_delete=models.CASCADE)
@@ -34,6 +42,10 @@ class Student(models.Model):
 class Subject(models.Model):
     subject_code = models.CharField(max_length=10, null=False, blank=False, primary_key=True, unique=True)
     subject_name = models.CharField(max_length=50, null=False, blank=False)
+    user_profile = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
 
 class Teacher(models.Model):
@@ -43,6 +55,10 @@ class Teacher(models.Model):
     email = models.EmailField(unique=True)
     address = models.TextField(blank=False, null=False)
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
+    user_profile = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
     phone = models.CharField(max_length=12, unique=True)
 
 
