@@ -15,25 +15,90 @@ from . import serializers, models, permissions
 
 
 class DepartmentViewSet(viewsets.ModelViewSet):
-    queryset = models.Department.objects.all()
+    authentication_classes = (TokenAuthentication,)
     serializer_class = serializers.DepartmentSerializer
-    permission_classes = []
+
+    #allow user to see the lists of object without being authenticated yet.
+    # permission_classes = (
+    #     permissions.UpdateOwnStatus,
+    #     IsAuthenticatedOrReadOnly
+    # )
+
+    permission_classes = (
+        permissions.UpdateOwnStatus,
+        IsAuthenticated
+    )
+
+    queryset = models.Department.objects.all()
+
+    def perform_create(self, serializer):
+        """Sets the user profile to the logged in user"""
+        serializer.save(user_profile=self.request.user)
+
 
 class StudentViewSet(viewsets.ModelViewSet):
-    queryset = models.Student.objects.all()
+    authentication_classes = (TokenAuthentication,)
     serializer_class = serializers.StudentSerializer
-    permission_classes = []
 
+    #allow user to see the lists of object without being authenticated yet.
+    # permission_classes = (
+    #     permissions.UpdateOwnStatus,
+    #     IsAuthenticatedOrReadOnly
+    # )
+
+    permission_classes = (
+        permissions.UpdateOwnStatus,
+        IsAuthenticated
+    )
+
+    queryset = models.Student.objects.all()
+
+    def perform_create(self, serializer):
+        """Sets the user profile to the logged in user"""
+        serializer.save(user_profile=self.request.user)
 
 class SubjectViewSet(viewsets.ModelViewSet):
-    queryset = models.Subject.objects.all()
+    authentication_classes = (TokenAuthentication,)
     serializer_class = serializers.SubjectSerializer
-    permission_classes = []
+
+    #allow user to see the lists of object without being authenticated yet.
+    # permission_classes = (
+    #     permissions.UpdateOwnStatus,
+    #     IsAuthenticatedOrReadOnly
+    # )
+
+    permission_classes = (
+        permissions.UpdateOwnStatus,
+        IsAuthenticated
+    )
+
+    queryset = models.Subject.objects.all()
+
+    def perform_create(self, serializer):
+        """Sets the user profile to the logged in user"""
+        serializer.save(user_profile=self.request.user)
+
 
 class TeacherViewSet(viewsets.ModelViewSet):
-    queryset = models.Teacher.objects.all()
+    authentication_classes = (TokenAuthentication,)
     serializer_class = serializers.TeacherSerializer
-    permission_classes = []
+
+    #allow user to see the lists of object without being authenticated yet.
+    # permission_classes = (
+    #     permissions.UpdateOwnStatus,
+    #     IsAuthenticatedOrReadOnly
+    # )
+
+    permission_classes = (
+        permissions.UpdateOwnStatus,
+        IsAuthenticated
+    )
+
+    queryset = models.Teacher.objects.all()
+
+    def perform_create(self, serializer):
+        """Sets the user profile to the logged in user"""
+        serializer.save(user_profile=self.request.user)
 
 
 class UserProfileViewSet(viewsets.ModelViewSet):
