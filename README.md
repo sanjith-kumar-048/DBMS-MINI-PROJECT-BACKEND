@@ -3,10 +3,10 @@
 ## Backend for DBMS mini project
 
 ```
-git clone https://github.com/sanjith-kumar-048/Site-For-Web-Developing.git
+git clone https://github.com/sanjith-kumar-048/DBMS-MINI-PROJECT-BACKEND.git
 ```
 ```
-cd Site-For-Web-Developing
+cd DBMS-MINI-PROJECT-BACKEND
 ```
 ```
 pip install virtualenv
